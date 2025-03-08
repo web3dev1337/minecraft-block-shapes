@@ -125,7 +125,11 @@ function generateBlockMetadata(block, category, analyzer) {
         collisionData: {
             shapes: block.shapes,
             boundingBox: calculateBoundingBox(block.shapes),
-            hasCollision: block.shapes.some(shape => shape && shape.length > 0)
+            hasCollision: block.shapes.some(shape => shape && shape.length > 0),
+            height: {
+                exact: analyzer.getBlockHeight(block.shapes),
+                category: analyzer.categorizeHeight(analyzer.getBlockHeight(block.shapes))
+            }
         },
         gameConversion: {
             canImport: category === 'fullBlocks',
