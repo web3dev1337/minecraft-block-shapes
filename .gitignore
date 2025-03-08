@@ -39,3 +39,8 @@ desktop.ini
 *.log
 *.debug
 *.tmp
+
+# Node.js
+node_modules/
+.env
+dist/
