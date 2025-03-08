@@ -114,10 +114,10 @@ class BlockAnalyzer {
     }
 
     categorizeHeight(height) {
-        if (height >= 1.0) return 'full';
-        if (height >= 0.875) return 'almost_full';
-        if (height >= 0.5) return 'half';
-        if (height >= 0.125) return 'slab';
+        if (height >= 0.5) return 'full';
+        if (height >= 0.4375) return 'almost_full';  // 0.875/2
+        if (height >= 0.25) return 'half';           // 0.5/2
+        if (height >= 0.0625) return 'slab';         // 0.125/2
         return 'minimal';
     }
 
