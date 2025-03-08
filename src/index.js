@@ -117,6 +117,101 @@ function getCategoryStats(blocks) {
            `- Material Types: ${stats.materialTypes}`;
 }
 
+// Add this function
+function generateBlockMetadata(block, category, analyzer) {
+    const baseMetadata = {
+        id: block.id,
+        importCategory: category,
+        collisionData: {
+            shapes: block.shapes,
+            boundingBox: calculateBoundingBox(block.shapes),
+            hasCollision: block.shapes.some(shape => shape && shape.length > 0)
+        },
+        gameConversion: {
+            canImport: category === 'fullBlocks',
+            complexity: getComplexityRating(category),
+            recommendation: analyzer.getConversionRecommendation(block, category),
+        },
+        materialInfo: {
+            type: getMaterialType(block.id),
+            isTransparent: block.id.includes('glass') || block.id.includes('ice'),
+            isInteractive: isInteractiveBlock(block.id)
+        },
+        blockBehavior: {
+            hasStates: block.shapes.length > 1,
+            isDirectional: isDirectionalBlock(block.id),
+            needsSupport: needsSupport(block.id),
+            hasGravity: hasGravity(block.id)
+        }
+    };
+
+    // Add specific conversion notes
+    if (category === 'partialBlocks') {
+        const dims = getMainDimensions(block.shapes);
+        baseMetadata.scalingInfo = {
+            originalSize: dims,
+            recommendedScale: calculateRecommendedScale(dims),
+            canUseFullBlock: dims.height > 0.8
+        };
+    }
+
+    return baseMetadata;
+}
+
+function getComplexityRating(category) {
+    const ratings = {
+        fullBlocks: 1,
+        partialBlocks: 2,
+        specialBlocks: 4,
+        nonStandardShapes: 3
+    };
+    return ratings[category] || 5;
+}
+
+function calculateBoundingBox(shapes) {
+    if (!shapes.length || !shapes[0] || !shapes[0].length) {
+        return { width: 0, height: 0, depth: 0 };
+    }
+
+    let minX = Infinity, minY = Infinity, minZ = Infinity;
+    let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+
+    shapes.forEach(shape => {
+        if (shape) {
+            shape.forEach(box => {
+                minX = Math.min(minX, box[0]);
+                minY = Math.min(minY, box[1]);
+                minZ = Math.min(minZ, box[2]);
+                maxX = Math.max(maxX, box[3]);
+                maxY = Math.max(maxY, box[4]);
+                maxZ = Math.max(maxZ, box[5]);
+            });
+        }
+    });
+
+    return {
+        width: Math.abs(maxX - minX),
+        height: Math.abs(maxY - minY),
+        depth: Math.abs(maxZ - minZ)
+    };
+}
+
+function isInteractiveBlock(id) {
+    return /door|button|lever|chest|furnace|table|gate/.test(id);
+}
+
+function isDirectionalBlock(id) {
+    return /stairs|door|torch|ladder|sign|button|lever|gate/.test(id);
+}
+
+function needsSupport(id) {
+    return /torch|ladder|sign|rail|lever|button|carpet|pressure_plate/.test(id);
+}
+
+function hasGravity(id) {
+    return /sand|gravel|anvil|dragon_egg/.test(id);
+}
+
 async function main() {
     const analyzer = new BlockAnalyzer();
     
@@ -174,13 +269,34 @@ async function main() {
         const reportDir = path.join(__dirname, '../reports');
         await fs.mkdir(reportDir, { recursive: true });
 
-        // Save JSON report
+        // Modify the JSON report generation in main():
         const jsonReport = {
-            categories,
-            statistics: stats,
             metadata: {
                 generatedAt: new Date().toISOString(),
-                totalBlocks: stats.total
+                version: "1.0.0",
+                totalBlocks: stats.total,
+                categories: {
+                    fullBlocks: stats.fullBlocks,
+                    partialBlocks: stats.partialBlocks,
+                    specialBlocks: stats.specialBlocks,
+                    nonStandardShapes: stats.nonStandardShapes
+                }
+            },
+            conversionStats: {
+                directlyImportable: stats.fullBlocks,
+                requiresScaling: stats.partialBlocks,
+                requiresCustomImplementation: stats.specialBlocks + stats.nonStandardShapes,
+                noCollisionBlocks: stats.noCollision,
+                multiStateBlocks: stats.multiShape
+            },
+            blocks: Object.entries(categories).flatMap(([category, blocks]) => 
+                blocks.map(block => generateBlockMetadata(block, category, analyzer))
+            ),
+            categoryOverviews: {
+                fullBlocks: "Direct 1:1 conversion possible",
+                partialBlocks: "Requires scaling or adaptation",
+                specialBlocks: "Needs custom implementation",
+                nonStandardShapes: "Consider simplified alternatives"
             }
         };
         await fs.writeFile(
