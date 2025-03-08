@@ -1,0 +1,41 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+target/
+build/
+out/
+
+# Minecraft specific
+run/
+.minecraft/
+crash-reports/
+logs/
+saves/
+screenshots/
+server/
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Debug and temporary files
+*.log
+*.debug
+*.tmp
