@@ -12,21 +12,33 @@ async function main() {
         for (const [category, blocks] of Object.entries(categories)) {
             console.log(`\n${category}:`);
             console.log(`Total: ${blocks.length} blocks`);
-            console.log('Examples:');
-            blocks.slice(0, 3).forEach(block => {
-                console.log(`  - Block ID: ${block.id}`);
-                console.log(`    Shape: ${JSON.stringify(block.shape)}`);
-            });
+            if (blocks.length > 0) {
+                console.log('Examples:');
+                blocks.slice(0, 3).forEach(block => {
+                    const dimensions = block.shape.map(box => ({
+                        width: box[3] - box[0],
+                        height: box[4] - box[1],
+                        depth: box[5] - box[2]
+                    }));
+                    
+                    console.log(`  - Block: ${block.id}`);
+                    console.log(`    Shape Index: ${block.shapeIndex}`);
+                    console.log(`    Collision Boxes: ${block.shape.length}`);
+                    console.log(`    Dimensions: ${JSON.stringify(dimensions)}`);
+                });
+            }
         }
 
         // Summary
         console.log('\nSummary:');
         console.log('--------');
-        console.log(`Total blocks analyzed: ${Object.values(categories).reduce((sum, arr) => sum + arr.length, 0)}`);
-        console.log(`Full blocks: ${categories.fullBlocks.length}`);
-        console.log(`Partial blocks: ${categories.partialBlocks.length}`);
+        const total = Object.values(categories).reduce((sum, arr) => sum + arr.length, 0);
+        console.log(`Total blocks analyzed: ${total}`);
+        console.log(`Full blocks (1x1x1): ${categories.fullBlocks.length}`);
+        console.log(`Partial blocks (smaller than 1x1x1): ${categories.partialBlocks.length}`);
+        console.log(`Special blocks (multiple boxes): ${categories.specialBlocks.length}`);
         console.log(`Non-standard shapes: ${categories.nonStandardShapes.length}`);
-        console.log(`Special blocks: ${categories.specialBlocks.length}`);
+
     } catch (error) {
         console.error('Analysis failed:', error);
     }
