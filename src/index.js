@@ -269,6 +269,41 @@ function calculateRecommendedScale(dimensions) {
     };
 }
 
+function generateMinimalBlockMetadata(block, category, analyzer) {
+    return {
+        id: block.id,
+        importCategory: category,
+        properties: {
+            hasCollision: block.shapes.some(shape => shape && shape.length > 0),
+            isTransparent: block.materialInfo.isTransparent,
+            isInteractive: block.materialInfo.isInteractive,
+            hasStates: block.blockBehavior.hasStates
+        },
+        height: {
+            exact: analyzer.getBlockHeight(block.shapes),
+            category: analyzer.categorizeHeight(analyzer.getBlockHeight(block.shapes))
+        }
+    };
+}
+
+// Generate minimal report
+async function generateMinimalReports(analyzer) {
+    const minimalReport = {
+        metadata: {
+            version: "1.0.0",
+            totalBlocks: analyzer.getTotalBlocks()
+        },
+        blocks: analyzer.getAllBlockMetadata().map(block => 
+            generateMinimalBlockMetadata(block, block.importCategory, analyzer)
+        )
+    };
+    
+    await fs.writeFile(
+        'reports/block-shapes-minimal.json', 
+        JSON.stringify(minimalReport, null, 2)
+    );
+}
+
 async function main() {
     const analyzer = new BlockAnalyzer();
     
@@ -368,9 +403,13 @@ async function main() {
             markdownReport
         );
 
+        // Add new minimal report generation
+        await generateMinimalReports(analyzer);
+
         console.log('\nReports generated:');
         console.log('- JSON report: reports/block-shapes.json');
         console.log('- Markdown report: reports/block-shapes.md');
+        console.log('- Minimal JSON report: reports/block-shapes-minimal.json');
 
     } catch (error) {
         console.error('Analysis failed:', error);
