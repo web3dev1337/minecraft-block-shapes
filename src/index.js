@@ -2,6 +2,19 @@ const BlockAnalyzer = require('./blockAnalyzer');
 const fs = require('fs').promises;
 const path = require('path');
 
+// Load mappings at the top of the file
+let blockMappings = {};
+
+async function loadMappings() {
+    try {
+        const mappingsData = await fs.readFile(path.join(__dirname, '..', 'minecraft-hytopia-mapping2.json'), 'utf8');
+        blockMappings = JSON.parse(mappingsData);
+    } catch (error) {
+        console.error('Error loading mappings:', error);
+        process.exit(1);
+    }
+}
+
 // Add getMaterialType helper function
 function getMaterialType(blockId) {
     if (blockId.includes('wood') || blockId.includes('planks')) return 'wood';
@@ -279,7 +292,8 @@ function generateMinimalBlockMetadata(block, category, analyzer) {
             isInteractive: block.materialInfo.isInteractive,
             hasStates: block.blockBehavior.hasStates
         },
-        height: block.collisionData.height
+        height: block.collisionData.height,
+        hytopiaMapping: blockMappings[block.id] || null
     };
 }
 
@@ -303,18 +317,20 @@ async function generateReports(analyzer, stats, categories) {
                 height: {
                     exact: analyzer.getBlockHeight(block.shapes),
                     category: analyzer.categorizeHeight(analyzer.getBlockHeight(block.shapes))
-                }
+                },
+                hytopiaMapping: blockMappings[block.id] || null
             }))
         )
     };
     
     await fs.writeFile(
-        'reports/block-shapes-minimal.json', 
+        path.join(__dirname, '..', 'reports', 'block-shapes-minimal.json'),
         JSON.stringify(minimalReport, null, 2)
     );
 }
 
 async function main() {
+    await loadMappings();
     const analyzer = new BlockAnalyzer();
     
     try {
