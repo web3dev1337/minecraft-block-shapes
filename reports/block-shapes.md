@@ -1,0 +1,1373 @@
+# Minecraft Block Shapes Analysis
+
+## fullBlocks (364 blocks)
+
+Standard cubic blocks that occupy a full 1x1x1 space. These are the easiest to convert and can be directly mapped to target game blocks.
+
+### stone
+- Shape Indices: `[1]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Direct 1:1 conversion
+- Notes: Can be directly mapped as standard cube blocks
+
+### granite
+- Shape Indices: `[1]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Direct 1:1 conversion
+- Notes: Can be directly mapped as standard cube blocks
+
+### polished_granite
+- Shape Indices: `[1]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Direct 1:1 conversion
+- Notes: Can be directly mapped as standard cube blocks
+
+### diorite
+- Shape Indices: `[1]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Direct 1:1 conversion
+- Notes: Can be directly mapped as standard cube blocks
+
+### polished_diorite
+- Shape Indices: `[1]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Direct 1:1 conversion
+- Notes: Can be directly mapped as standard cube blocks
+
+### Category Statistics
+- Total Blocks: 364
+- Unique Shapes: 1
+- Material Types: 6
+
+### All blocks in this category:
+- stone
+- granite
+- polished_granite
+- diorite
+- polished_diorite
+- andesite
+- polished_andesite
+- grass_block
+- dirt
+- podzol
+- cobblestone
+- oak_planks
+- spruce_planks
+- birch_planks
+- jungle_planks
+- acacia_planks
+- cherry_planks
+- dark_oak_planks
+- mangrove_planks
+- bamboo_planks
+- bamboo_mosaic
+- sand
+- gravel
+- gold_ore
+- deepslate_gold_ore
+- iron_ore
+- deepslate_iron_ore
+- coal_ore
+- deepslate_coal_ore
+- nether_gold_ore
+- oak_log
+- spruce_log
+- birch_log
+- jungle_log
+- acacia_log
+- cherry_log
+- dark_oak_log
+- mangrove_log
+- mangrove_roots
+- muddy_mangrove_roots
+- bamboo_block
+- stripped_spruce_log
+- stripped_birch_log
+- stripped_jungle_log
+- stripped_acacia_log
+- stripped_cherry_log
+- stripped_dark_oak_log
+- stripped_oak_log
+- stripped_mangrove_log
+- stripped_bamboo_block
+- oak_wood
+- spruce_wood
+- birch_wood
+- jungle_wood
+- acacia_wood
+- dark_oak_wood
+- stripped_oak_wood
+- stripped_spruce_wood
+- stripped_birch_wood
+- stripped_jungle_wood
+- stripped_acacia_wood
+- stripped_cherry_wood
+- stripped_dark_oak_wood
+- stripped_mangrove_wood
+- sponge
+- glass
+- lapis_ore
+- deepslate_lapis_ore
+- lapis_block
+- dispenser
+- sandstone
+- noteblock
+- sticky_piston
+- piston
+- white_wool
+- orange_wool
+- magenta_wool
+- light_blue_wool
+- yellow_wool
+- lime_wool
+- pink_wool
+- gray_wool
+- light_gray_wool
+- cyan_wool
+- purple_wool
+- blue_wool
+- brown_wool
+- green_wool
+- red_wool
+- black_wool
+- gold_block
+- iron_block
+- brick_block
+- bookshelf
+- chiseled_bookshelf
+- mossy_cobblestone
+- obsidian
+- mob_spawner
+- diamond_ore
+- deepslate_diamond_ore
+- diamond_block
+- crafting_table
+- lit_furnace
+- furnace
+- redstone_ore
+- lit_redstone_ore
+- deepslate_redstone_ore
+- lit_deepslate_redstone_ore
+- ice
+- snow
+- clay
+- jukebox
+- netherrack
+- soul_soil
+- basalt
+- polished_basalt
+- glowstone
+- carved_pumpkin
+- lit_pumpkin
+- white_stained_glass
+- orange_stained_glass
+- magenta_stained_glass
+- light_blue_stained_glass
+- yellow_stained_glass
+- lime_stained_glass
+- pink_stained_glass
+- gray_stained_glass
+- light_gray_stained_glass
+- cyan_stained_glass
+- purple_stained_glass
+- blue_stained_glass
+- brown_stained_glass
+- green_stained_glass
+- red_stained_glass
+- black_stained_glass
+- packed_mud
+- mud_bricks
+- monster_egg
+- melon_block
+- mycelium
+- nether_brick
+- end_stone
+- redstone_lamp
+- lit_redstone_lamp
+- emerald_ore
+- deepslate_emerald_ore
+- emerald_block
+- command_block
+- beacon
+- redstone_block
+- quartz_ore
+- dropper
+- white_terracotta
+- orange_terracotta
+- magenta_terracotta
+- light_blue_terracotta
+- yellow_terracotta
+- lime_terracotta
+- pink_terracotta
+- gray_terracotta
+- light_gray_terracotta
+- cyan_terracotta
+- purple_terracotta
+- blue_terracotta
+- brown_terracotta
+- green_terracotta
+- red_terracotta
+- black_terracotta
+- slime
+- barrier
+- prismarine
+- sea_lantern
+- hardened_clay
+- coal_block
+- packed_ice
+- red_sandstone
+- smooth_stone
+- chorus_flower
+- end_bricks
+- repeating_command_block
+- chain_command_block
+- frosted_ice
+- magma
+- nether_wart_block
+- red_nether_brick
+- observer
+- undyed_shulker_box
+- white_shulker_box
+- orange_shulker_box
+- magenta_shulker_box
+- light_blue_shulker_box
+- yellow_shulker_box
+- lime_shulker_box
+- pink_shulker_box
+- gray_shulker_box
+- light_gray_shulker_box
+- cyan_shulker_box
+- purple_shulker_box
+- blue_shulker_box
+- brown_shulker_box
+- green_shulker_box
+- red_shulker_box
+- black_shulker_box
+- white_concrete
+- orange_concrete
+- magenta_concrete
+- light_blue_concrete
+- yellow_concrete
+- lime_concrete
+- pink_concrete
+- gray_concrete
+- light_gray_concrete
+- cyan_concrete
+- purple_concrete
+- blue_concrete
+- brown_concrete
+- green_concrete
+- red_concrete
+- black_concrete
+- white_concrete_powder
+- orange_concrete_powder
+- magenta_concrete_powder
+- light_blue_concrete_powder
+- yellow_concrete_powder
+- lime_concrete_powder
+- pink_concrete_powder
+- gray_concrete_powder
+- light_gray_concrete_powder
+- cyan_concrete_powder
+- purple_concrete_powder
+- blue_concrete_powder
+- brown_concrete_powder
+- green_concrete_powder
+- red_concrete_powder
+- black_concrete_powder
+- dried_kelp_block
+- dead_tube_coral_block
+- dead_brain_coral_block
+- dead_bubble_coral_block
+- dead_fire_coral_block
+- dead_horn_coral_block
+- tube_coral_block
+- brain_coral_block
+- bubble_coral_block
+- fire_coral_block
+- horn_coral_block
+- blue_ice
+- loom
+- barrel
+- smoker
+- lit_smoker
+- lit_blast_furnace
+- blast_furnace
+- cartography_table
+- fletching_table
+- smithing_table
+- warped_stem
+- stripped_warped_stem
+- warped_hyphae
+- stripped_warped_hyphae
+- warped_nylium
+- warped_wart_block
+- crimson_stem
+- stripped_crimson_stem
+- crimson_hyphae
+- stripped_crimson_hyphae
+- crimson_nylium
+- shroomlight
+- crimson_planks
+- warped_planks
+- target
+- bee_nest
+- beehive
+- honeycomb_block
+- netherite_block
+- ancient_debris
+- crying_obsidian
+- respawn_anchor
+- lodestone
+- blackstone
+- polished_blackstone
+- polished_blackstone_bricks
+- cracked_polished_blackstone_bricks
+- chiseled_polished_blackstone
+- gilded_blackstone
+- chiseled_nether_bricks
+- cracked_nether_bricks
+- quartz_bricks
+- amethyst_block
+- budding_amethyst
+- tuff
+- polished_tuff
+- chiseled_tuff
+- tuff_bricks
+- chiseled_tuff_bricks
+- calcite
+- tinted_glass
+- sculk
+- sculk_catalyst
+- copper_block
+- exposed_copper
+- weathered_copper
+- oxidized_copper
+- copper_ore
+- deepslate_copper_ore
+- oxidized_cut_copper
+- weathered_cut_copper
+- exposed_cut_copper
+- cut_copper
+- oxidized_chiseled_copper
+- weathered_chiseled_copper
+- exposed_chiseled_copper
+- chiseled_copper
+- waxed_oxidized_chiseled_copper
+- waxed_weathered_chiseled_copper
+- waxed_exposed_chiseled_copper
+- waxed_chiseled_copper
+- waxed_copper
+- waxed_weathered_copper
+- waxed_exposed_copper
+- waxed_oxidized_copper
+- waxed_oxidized_cut_copper
+- waxed_weathered_cut_copper
+- waxed_exposed_cut_copper
+- waxed_cut_copper
+- copper_grate
+- exposed_copper_grate
+- weathered_copper_grate
+- oxidized_copper_grate
+- waxed_copper_grate
+- waxed_exposed_copper_grate
+- waxed_weathered_copper_grate
+- waxed_oxidized_copper_grate
+- copper_bulb
+- exposed_copper_bulb
+- raw_iron_block
+- trial_spawner
+- polished_deepslate
+- crafter
+- weathered_copper_bulb
+- moss_block
+- cobbled_deepslate
+- verdant_froglight
+- pearlescent_froglight
+- waxed_oxidized_copper_bulb
+- vault
+- waxed_weathered_copper_bulb
+- reinforced_deepslate
+- dirt_with_roots
+- deepslate
+- deepslate_bricks
+- chiseled_deepslate
+- cracked_deepslate_bricks
+- raw_copper_block
+- infested_deepslate
+- deepslate_tiles
+- waxed_exposed_copper_bulb
+- cracked_deepslate_tiles
+- oxidized_copper_bulb
+- smooth_basalt
+- waxed_copper_bulb
+- dripstone_block
+- raw_gold_block
+- ochre_froglight
+
+## partialBlocks (57 blocks)
+
+Blocks that occupy less than a full block space. These require careful consideration of scaling and placement in the target game.
+
+### oak_fence
+- Shape Indices: `[82]`
+- Shape 82, Box 0: `{"width":0.25,"height":0.75,"depth":0.25}`
+
+Conversion Recommendation:
+- Difficulty: Medium
+- Strategy: Convert as centered post
+- Notes: Centered 0.25x0.75x0.25 block, consider as post/pole
+
+Block Analysis:
+- Category: Barrier
+- Sub-type: Connector
+- Properties: Connects to neighbors, Partial block
+
+### soul_sand
+- Shape Indices: `[65]`
+- Shape 65, Box 0: `{"width":0.5,"height":0.4375,"depth":0.5}`
+
+Conversion Recommendation:
+- Difficulty: Medium
+- Strategy: Scale to nearest block unit
+- Notes: Partial block 0.5x0.4375x0.5, consider scaling or using closest standard size
+
+### iron_bars
+- Shape Indices: `[107]`
+- Shape 107, Box 0: `{"width":0.375,"height":0.5,"depth":0.375}`
+
+Conversion Recommendation:
+- Difficulty: Medium
+- Strategy: Convert as centered post
+- Notes: Centered 0.375x0.5x0.375 block, consider as post/pole
+
+### glass_pane
+- Shape Indices: `[107]`
+- Shape 107, Box 0: `{"width":0.375,"height":0.5,"depth":0.375}`
+
+Conversion Recommendation:
+- Difficulty: Medium
+- Strategy: Convert as centered post
+- Notes: Centered 0.375x0.5x0.375 block, consider as post/pole
+
+### waterlily
+- Shape Indices: `[111]`
+- Shape 111, Box 0: `{"width":0.375,"height":0.046875,"depth":0.375}`
+
+Conversion Recommendation:
+- Difficulty: Medium
+- Strategy: Convert as flat surface
+- Notes: Very thin block (height: 0.046875), consider as decorative surface
+
+### Category Statistics
+- Total Blocks: 57
+- Unique Shapes: 12
+- Material Types: 4
+
+### All blocks in this category:
+- oak_fence
+- soul_sand
+- iron_bars
+- glass_pane
+- waterlily
+- nether_brick_fence
+- enchanting_table
+- dragon_egg
+- white_stained_glass_pane
+- orange_stained_glass_pane
+- magenta_stained_glass_pane
+- light_blue_stained_glass_pane
+- yellow_stained_glass_pane
+- lime_stained_glass_pane
+- pink_stained_glass_pane
+- gray_stained_glass_pane
+- light_gray_stained_glass_pane
+- cyan_stained_glass_pane
+- purple_stained_glass_pane
+- blue_stained_glass_pane
+- brown_stained_glass_pane
+- green_stained_glass_pane
+- red_stained_glass_pane
+- black_stained_glass_pane
+- white_carpet
+- orange_carpet
+- magenta_carpet
+- light_blue_carpet
+- yellow_carpet
+- lime_carpet
+- pink_carpet
+- gray_carpet
+- light_gray_carpet
+- cyan_carpet
+- purple_carpet
+- blue_carpet
+- brown_carpet
+- green_carpet
+- red_carpet
+- black_carpet
+- spruce_fence
+- birch_fence
+- jungle_fence
+- acacia_fence
+- cherry_fence
+- dark_oak_fence
+- mangrove_fence
+- bamboo_fence
+- chorus_plant
+- grass_path
+- conduit
+- crimson_fence
+- warped_fence
+- honey_block
+- heavy_core
+- mud
+- moss_carpet
+
+## nonStandardShapes (356 blocks)
+
+Blocks with unique or no collision shapes. These may need custom implementation or could be omitted.
+
+### air
+- Shape Indices: `[0]`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Decorative element
+- Notes: No collision, implement as visual effect or ignore
+
+### oak_sapling
+- Shape Indices: `[0, 0]`
+- Shape 0: No collision box
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Decorative element
+- Notes: No collision, implement as visual effect or ignore
+
+### spruce_sapling
+- Shape Indices: `[0, 0]`
+- Shape 0: No collision box
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Decorative element
+- Notes: No collision, implement as visual effect or ignore
+
+### birch_sapling
+- Shape Indices: `[0, 0]`
+- Shape 0: No collision box
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Decorative element
+- Notes: No collision, implement as visual effect or ignore
+
+### jungle_sapling
+- Shape Indices: `[0, 0]`
+- Shape 0: No collision box
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Easy
+- Strategy: Decorative element
+- Notes: No collision, implement as visual effect or ignore
+
+### Category Statistics
+- Total Blocks: 356
+- Unique Shapes: 11
+- Material Types: 5
+
+### All blocks in this category:
+- air
+- oak_sapling
+- spruce_sapling
+- birch_sapling
+- jungle_sapling
+- acacia_sapling
+- cherry_sapling
+- dark_oak_sapling
+- mangrove_propagule
+- flowing_water
+- water
+- lava
+- flowing_lava
+- golden_rail
+- detector_rail
+- web
+- short_grass
+- fern
+- deadbush
+- seagrass
+- moving_block
+- yellow_flower
+- torchflower
+- poppy
+- blue_orchid
+- allium
+- azure_bluet
+- red_tulip
+- orange_tulip
+- white_tulip
+- pink_tulip
+- oxeye_daisy
+- cornflower
+- wither_rose
+- lily_of_the_valley
+- brown_mushroom
+- red_mushroom
+- torch
+- fire
+- soul_fire
+- redstone_wire
+- wheat
+- farmland
+- standing_sign
+- spruce_standing_sign
+- birch_standing_sign
+- acacia_standing_sign
+- cherry_standing_sign
+- jungle_standing_sign
+- darkoak_standing_sign
+- mangrove_standing_sign
+- bamboo_standing_sign
+- rail
+- wall_sign
+- spruce_wall_sign
+- birch_wall_sign
+- acacia_wall_sign
+- cherry_wall_sign
+- jungle_wall_sign
+- darkoak_wall_sign
+- mangrove_wall_sign
+- bamboo_wall_sign
+- lever
+- stone_pressure_plate
+- wooden_pressure_plate
+- spruce_pressure_plate
+- birch_pressure_plate
+- jungle_pressure_plate
+- acacia_pressure_plate
+- cherry_pressure_plate
+- dark_oak_pressure_plate
+- mangrove_pressure_plate
+- bamboo_pressure_plate
+- redstone_torch
+- unlit_redstone_torch
+- stone_button
+- cactus
+- reeds
+- soul_torch
+- portal
+- powered_repeater
+- unpowered_repeater
+- pumpkin_stem
+- melon_stem
+- vine
+- glow_lichen
+- nether_wart
+- end_portal
+- ender_chest
+- tripwire_hook
+- trip_wire
+- carrots
+- potatoes
+- wooden_button
+- spruce_button
+- birch_button
+- jungle_button
+- acacia_button
+- cherry_button
+- dark_oak_button
+- mangrove_button
+- bamboo_button
+- light_weighted_pressure_plate
+- heavy_weighted_pressure_plate
+- daylight_detector
+- daylight_detector_inverted
+- activator_rail
+- light_block
+- sunflower
+- lilac
+- rose_bush
+- peony
+- tall_grass
+- large_fern
+- standing_banner
+- wall_banner
+- torchflower_crop
+- pitcher_plant
+- beetroot
+- end_gateway
+- structure_void
+- kelp
+- sniffer_egg
+- dead_tube_coral
+- dead_brain_coral
+- dead_bubble_coral
+- dead_fire_coral
+- dead_horn_coral
+- tube_coral
+- brain_coral
+- bubble_coral
+- fire_coral
+- horn_coral
+- dead_tube_coral_fan
+- dead_brain_coral_fan
+- dead_bubble_coral_fan
+- dead_fire_coral_fan
+- dead_horn_coral_fan
+- tube_coral_fan
+- brain_coral_fan
+- bubble_coral_fan
+- fire_coral_fan
+- horn_coral_fan
+- coral_fan_hang
+- coral_fan_hang2
+- coral_fan_hang3
+- bamboo_sapling
+- bubble_column
+- stonecutter_block
+- campfire
+- soul_campfire
+- sweet_berry_bush
+- warped_fungus
+- warped_roots
+- nether_sprouts
+- crimson_fungus
+- weeping_vines
+- twisting_vines
+- crimson_roots
+- crimson_pressure_plate
+- warped_pressure_plate
+- crimson_button
+- warped_button
+- crimson_standing_sign
+- warped_standing_sign
+- crimson_wall_sign
+- warped_wall_sign
+- polished_blackstone_pressure_plate
+- polished_blackstone_button
+- powder_snow
+- sculk_sensor
+- calibrated_sculk_sensor
+- sculk_vein
+- sculk_shrieker
+- hard_blue_stained_glass_pane
+- hard_light_gray_stained_glass
+- info_update2
+- element_84
+- element_85
+- element_86
+- element_87
+- element_80
+- element_81
+- element_82
+- element_83
+- element_88
+- element_89
+- element_97
+- element_96
+- element_95
+- element_94
+- element_93
+- element_92
+- element_91
+- element_90
+- element_99
+- element_98
+- element_68
+- element_69
+- element_62
+- element_63
+- element_60
+- element_61
+- element_66
+- element_67
+- element_64
+- element_65
+- element_79
+- element_78
+- element_75
+- element_74
+- element_77
+- element_76
+- element_71
+- element_70
+- element_73
+- element_72
+- element_40
+- element_41
+- element_42
+- element_43
+- element_44
+- element_45
+- element_46
+- element_47
+- element_48
+- element_49
+- element_53
+- element_52
+- element_51
+- element_50
+- element_57
+- element_56
+- element_55
+- element_54
+- element_59
+- element_58
+- element_26
+- element_27
+- element_24
+- element_25
+- element_22
+- element_23
+- element_20
+- element_21
+- element_28
+- element_29
+- element_39
+- element_38
+- element_31
+- element_30
+- element_33
+- element_32
+- element_35
+- element_34
+- element_37
+- element_36
+- element_19
+- element_18
+- element_17
+- element_16
+- element_15
+- element_14
+- element_13
+- element_12
+- element_11
+- element_10
+- hard_pink_stained_glass_pane
+- colored_torch_rg
+- colored_torch_bp
+- cave_vines_head_with_berries
+- chemical_heat
+- spore_blossom
+- netherreactor
+- chemistry_table
+- camera
+- element_8
+- element_9
+- element_6
+- element_7
+- element_4
+- element_5
+- element_2
+- element_3
+- element_0
+- element_1
+- hard_cyan_stained_glass_pane
+- hard_white_stained_glass_pane
+- allow
+- hard_purple_stained_glass_pane
+- hard_red_stained_glass_pane
+- hard_red_stained_glass
+- hard_green_stained_glass
+- hard_gray_stained_glass_pane
+- decorated_pot
+- hard_lime_stained_glass
+- hard_magenta_stained_glass_pane
+- hard_orange_stained_glass
+- hard_black_stained_glass
+- cave_vines_body_with_berries
+- deny
+- element_118
+- element_114
+- element_115
+- element_116
+- element_117
+- element_110
+- element_111
+- element_112
+- element_113
+- element_109
+- element_108
+- element_107
+- element_106
+- element_105
+- element_104
+- element_103
+- element_102
+- element_101
+- element_100
+- hard_light_blue_stained_glass_pane
+- border_block
+- cave_vines
+- hard_glass
+- pink_petals
+- unknown
+- reserved6
+- hard_yellow_stained_glass
+- hard_light_gray_stained_glass_pane
+- hard_lime_stained_glass_pane
+- frog_spawn
+- hard_purple_stained_glass
+- hard_blue_stained_glass
+- hard_cyan_stained_glass
+- small_dripleaf_block
+- client_request_placeholder_block
+- frame
+- hard_yellow_stained_glass_pane
+- hard_magenta_stained_glass
+- hard_white_stained_glass
+- glowingobsidian
+- underwater_torch
+- hard_light_blue_stained_glass
+- hard_brown_stained_glass_pane
+- invisible_bedrock
+- stonecutter
+- hard_glass_pane
+- hard_gray_stained_glass
+- info_update
+- hard_black_stained_glass_pane
+- hard_brown_stained_glass
+- hard_orange_stained_glass_pane
+- hanging_roots
+- glow_frame
+- hard_green_stained_glass_pane
+- hard_pink_stained_glass
+
+## specialBlocks (323 blocks)
+
+Blocks with complex shapes or multiple states. These may need special handling or simplification for conversion.
+
+### bedrock
+- Shape Indices: `[1, 0]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Hard
+- Strategy: State-based conversion
+- Notes: Block has multiple states, consider implementing primary state only
+
+### suspicious_sand
+- Shape Indices: `[1, 0, 1, 0, 1, 0, 1, 0]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Hard
+- Strategy: State-based conversion
+- Notes: Block has multiple states, consider implementing primary state only
+
+### suspicious_gravel
+- Shape Indices: `[1, 0, 1, 0, 1, 0, 1, 0]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Hard
+- Strategy: State-based conversion
+- Notes: Block has multiple states, consider implementing primary state only
+
+### cherry_wood
+- Shape Indices: `[1, 0, 1, 0, 1, 0]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Hard
+- Strategy: State-based conversion
+- Notes: Block has multiple states, consider implementing primary state only
+
+### mangrove_wood
+- Shape Indices: `[1, 0, 1, 0, 1, 0]`
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+- Shape 1, Box 0: `{"width":0.5,"height":0.5,"depth":0.5}`
+- Shape 0: No collision box
+
+Conversion Recommendation:
+- Difficulty: Hard
+- Strategy: State-based conversion
+- Notes: Block has multiple states, consider implementing primary state only
+
+### Category Statistics
+- Total Blocks: 323
+- Unique Shapes: 184
+- Material Types: 4
+
+### All blocks in this category:
+- bedrock
+- suspicious_sand
+- suspicious_gravel
+- cherry_wood
+- mangrove_wood
+- oak_leaves
+- spruce_leaves
+- birch_leaves
+- jungle_leaves
+- acacia_leaves
+- cherry_leaves
+- dark_oak_leaves
+- mangrove_leaves
+- azalea_leaves
+- azalea_leaves_flowered
+- bed
+- piston_arm_collision
+- sticky_piston_arm_collision
+- tnt
+- oak_stairs
+- chest
+- wooden_door
+- ladder
+- stone_stairs
+- oak_hanging_sign
+- spruce_hanging_sign
+- birch_hanging_sign
+- acacia_hanging_sign
+- cherry_hanging_sign
+- jungle_hanging_sign
+- dark_oak_hanging_sign
+- crimson_hanging_sign
+- warped_hanging_sign
+- mangrove_hanging_sign
+- bamboo_hanging_sign
+- iron_door
+- snow_layer
+- cake
+- trapdoor
+- spruce_trapdoor
+- birch_trapdoor
+- jungle_trapdoor
+- acacia_trapdoor
+- cherry_trapdoor
+- dark_oak_trapdoor
+- mangrove_trapdoor
+- bamboo_trapdoor
+- stonebrick
+- brown_mushroom_block
+- red_mushroom_block
+- chain
+- pumpkin
+- fence_gate
+- brick_stairs
+- stone_brick_stairs
+- mud_brick_stairs
+- nether_brick_stairs
+- brewing_stand
+- cauldron
+- end_portal_frame
+- cocoa
+- sandstone_stairs
+- spruce_stairs
+- birch_stairs
+- jungle_stairs
+- cobblestone_wall
+- skull
+- anvil
+- trapped_chest
+- powered_comparator
+- unpowered_comparator
+- hopper
+- quartz_block
+- quartz_stairs
+- acacia_stairs
+- cherry_stairs
+- dark_oak_stairs
+- mangrove_stairs
+- bamboo_stairs
+- bamboo_mosaic_stairs
+- iron_trapdoor
+- prismarine_stairs
+- prismarine_bricks_stairs
+- dark_prismarine_stairs
+- stone_block_slab2
+- double_stone_block_slab2
+- hay_block
+- red_sandstone_stairs
+- oak_double_slab
+- oak_slab
+- spruce_double_slab
+- spruce_slab
+- birch_slab
+- birch_double_slab
+- jungle_slab
+- jungle_double_slab
+- acacia_double_slab
+- acacia_slab
+- cherry_double_slab
+- cherry_slab
+- dark_oak_slab
+- dark_oak_double_slab
+- mangrove_double_slab
+- mangrove_slab
+- bamboo_double_slab
+- bamboo_slab
+- bamboo_mosaic_slab
+- bamboo_mosaic_double_slab
+- stone_block_slab4
+- double_stone_block_slab4
+- double_stone_block_slab
+- smooth_stone_slab
+- sandstone_slab
+- petrified_oak_slab
+- cobblestone_slab
+- brick_slab
+- stone_brick_slab
+- mud_brick_double_slab
+- mud_brick_slab
+- nether_brick_slab
+- quartz_slab
+- spruce_fence_gate
+- birch_fence_gate
+- jungle_fence_gate
+- acacia_fence_gate
+- cherry_fence_gate
+- dark_oak_fence_gate
+- mangrove_fence_gate
+- bamboo_fence_gate
+- spruce_door
+- birch_door
+- jungle_door
+- acacia_door
+- cherry_door
+- dark_oak_door
+- mangrove_door
+- bamboo_door
+- end_rod
+- purpur_block
+- purpur_stairs
+- pitcher_crop
+- bone_block
+- white_glazed_terracotta
+- orange_glazed_terracotta
+- magenta_glazed_terracotta
+- light_blue_glazed_terracotta
+- yellow_glazed_terracotta
+- lime_glazed_terracotta
+- pink_glazed_terracotta
+- gray_glazed_terracotta
+- silver_glazed_terracotta
+- cyan_glazed_terracotta
+- purple_glazed_terracotta
+- blue_glazed_terracotta
+- brown_glazed_terracotta
+- green_glazed_terracotta
+- red_glazed_terracotta
+- black_glazed_terracotta
+- turtle_egg
+- sea_pickle
+- bamboo
+- polished_granite_stairs
+- smooth_red_sandstone_stairs
+- mossy_stone_brick_stairs
+- polished_diorite_stairs
+- mossy_cobblestone_stairs
+- end_brick_stairs
+- normal_stone_stairs
+- smooth_sandstone_stairs
+- smooth_quartz_stairs
+- granite_stairs
+- andesite_stairs
+- red_nether_brick_stairs
+- polished_andesite_stairs
+- diorite_stairs
+- stone_block_slab3
+- double_stone_block_slab3
+- mud_brick_wall
+- scaffolding
+- grindstone
+- lectern
+- bell
+- lantern
+- soul_lantern
+- crimson_double_slab
+- crimson_slab
+- warped_double_slab
+- warped_slab
+- crimson_trapdoor
+- warped_trapdoor
+- crimson_fence_gate
+- warped_fence_gate
+- crimson_stairs
+- warped_stairs
+- crimson_door
+- warped_door
+- structure_block
+- jigsaw
+- composter
+- blackstone_stairs
+- blackstone_wall
+- blackstone_double_slab
+- blackstone_slab
+- polished_blackstone_brick_double_slab
+- polished_blackstone_brick_slab
+- polished_blackstone_brick_stairs
+- polished_blackstone_brick_wall
+- polished_blackstone_stairs
+- polished_blackstone_double_slab
+- polished_blackstone_slab
+- polished_blackstone_wall
+- candle
+- white_candle
+- orange_candle
+- magenta_candle
+- light_blue_candle
+- yellow_candle
+- lime_candle
+- pink_candle
+- gray_candle
+- light_gray_candle
+- cyan_candle
+- purple_candle
+- blue_candle
+- brown_candle
+- green_candle
+- red_candle
+- black_candle
+- candle_cake
+- white_candle_cake
+- orange_candle_cake
+- magenta_candle_cake
+- light_blue_candle_cake
+- yellow_candle_cake
+- lime_candle_cake
+- pink_candle_cake
+- gray_candle_cake
+- light_gray_candle_cake
+- cyan_candle_cake
+- purple_candle_cake
+- blue_candle_cake
+- brown_candle_cake
+- green_candle_cake
+- red_candle_cake
+- black_candle_cake
+- amethyst_cluster
+- large_amethyst_bud
+- medium_amethyst_bud
+- small_amethyst_bud
+- tuff_slab
+- tuff_double_slab
+- tuff_stairs
+- tuff_wall
+- polished_tuff_slab
+- polished_tuff_double_slab
+- polished_tuff_stairs
+- polished_tuff_wall
+- tuff_brick_slab
+- tuff_brick_double_slab
+- tuff_brick_stairs
+- tuff_brick_wall
+- oxidized_cut_copper_stairs
+- weathered_cut_copper_stairs
+- exposed_cut_copper_stairs
+- cut_copper_stairs
+- oxidized_double_cut_copper_slab
+- oxidized_cut_copper_slab
+- weathered_cut_copper_slab
+- weathered_double_cut_copper_slab
+- exposed_double_cut_copper_slab
+- exposed_cut_copper_slab
+- double_cut_copper_slab
+- cut_copper_slab
+- waxed_oxidized_cut_copper_stairs
+- waxed_weathered_cut_copper_stairs
+- waxed_exposed_cut_copper_stairs
+- waxed_cut_copper_stairs
+- waxed_oxidized_cut_copper_slab
+- waxed_oxidized_double_cut_copper_slab
+- waxed_weathered_double_cut_copper_slab
+- waxed_weathered_cut_copper_slab
+- waxed_exposed_cut_copper_slab
+- waxed_exposed_double_cut_copper_slab
+- waxed_double_cut_copper_slab
+- waxed_cut_copper_slab
+- copper_door
+- exposed_copper_door
+- oxidized_copper_door
+- weathered_copper_door
+- waxed_copper_door
+- waxed_exposed_copper_door
+- waxed_oxidized_copper_door
+- waxed_weathered_copper_door
+- copper_trapdoor
+- exposed_copper_trapdoor
+- oxidized_copper_trapdoor
+- weathered_copper_trapdoor
+- waxed_copper_trapdoor
+- waxed_exposed_copper_trapdoor
+- waxed_oxidized_copper_trapdoor
+- waxed_weathered_copper_trapdoor
+- cobbled_deepslate_wall
+- polished_deepslate_wall
+- cobbled_deepslate_slab
+- deepslate_brick_stairs
+- pointed_dripstone
+- azalea
+- big_dripleaf
+- cobbled_deepslate_double_slab
+- flowering_azalea
+- polished_deepslate_stairs
+- polished_deepslate_slab
+- polished_deepslate_double_slab
+- deepslate_tile_double_slab
+- deepslate_brick_slab
+- deepslate_tile_wall
+- deepslate_tile_stairs
+- deepslate_tile_slab
+- deepslate_brick_double_slab
+- lightning_rod
+- deepslate_brick_wall
+- flower_pot
+- cobbled_deepslate_stairs
+
+## Statistics
+
+### General
+- Total blocks analyzed: 1100
+- Full blocks (1x1x1): 364
+- Partial blocks: 57
+- Special blocks: 323
+- Non-standard shapes: 356
+
+### Detailed
+- Blocks with no collision: 341
+- Blocks with multiple shapes: 321
+- Blocks with multiple collision boxes: 102
