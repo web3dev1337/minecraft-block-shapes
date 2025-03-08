@@ -66,18 +66,21 @@ class BlockAnalyzer {
     }
 
     isFullBlock(shapes) {
-        // A full block has a single shape with a single box from (0,0,0) to (1,1,1)
-        if (shapes.length !== 1 || !shapes[0] || shapes[0].length !== 1) return false;
+        // A full block has one or more identical shapes that are full blocks
+        if (!shapes.length) return false;
         
-        const box = shapes[0][0];
-        if (!box || box.length !== 6) return false;
+        // Check if all shapes are either empty or full blocks
+        return shapes.every(shape => {
+            if (!shape || shape.length !== 1) return false;
+            const box = shape[0];
+            if (!box || box.length !== 6) return false;
 
-        // Check if the box fills a 1x1x1 space
-        const width = Math.abs(box[3] - box[0]);
-        const height = Math.abs(box[4] - box[1]);
-        const depth = Math.abs(box[5] - box[2]);
+            const width = Math.abs(box[3] - box[0]);
+            const height = Math.abs(box[4] - box[1]);
+            const depth = Math.abs(box[5] - box[2]);
 
-        return width === 0.5 && height === 0.5 && depth === 0.5;  // Full blocks are 0.5x0.5x0.5 centered boxes
+            return width === 0.5 && height === 0.5 && depth === 0.5;
+        });
     }
 
     isPartialBlock(shapes) {
@@ -95,8 +98,11 @@ class BlockAnalyzer {
     }
 
     isSpecialBlock(shapes) {
-        // Special blocks have multiple shapes or multiple boxes in a shape
-        return shapes.some(shape => shape && shape.length > 1) || shapes.length > 1;
+        // Special blocks have multiple DIFFERENT shapes or multiple boxes in a shape
+        const uniqueShapes = new Set(shapes.map(shape => 
+            shape ? JSON.stringify(shape) : 'empty'
+        ));
+        return uniqueShapes.size > 1 || shapes.some(shape => shape && shape.length > 1);
     }
 
     getShapeDimensions(box) {
