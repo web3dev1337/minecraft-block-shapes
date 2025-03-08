@@ -35,22 +35,23 @@ class BlockAnalyzer {
         };
 
         // Analyze each block's shape
-        for (const [blockId, shapeIndex] of Object.entries(this.collisionsData.blocks)) {
-            const shape = this.collisionsData.shapes[shapeIndex];
+        for (const [blockId, shapeIndices] of Object.entries(this.collisionsData.blocks)) {
+            // Get all shapes for this block
+            const shapes = shapeIndices.map(index => this.collisionsData.shapes[index] || []);
+            
             const blockInfo = {
                 id: blockId,
-                shapeIndex: shapeIndex,
-                shape: shape
+                shapeIndices: shapeIndices,
+                shapes: shapes
             };
 
-            if (!shape || shape.length === 0) {
-                // No collision boxes (air, fluids, etc)
+            if (this.isNoCollisionBlock(shapes)) {
                 categories.nonStandardShapes.push(blockInfo);
-            } else if (this.isFullBlock(shape)) {
+            } else if (this.isFullBlock(shapes)) {
                 categories.fullBlocks.push(blockInfo);
-            } else if (this.isPartialBlock(shape)) {
+            } else if (this.isPartialBlock(shapes)) {
                 categories.partialBlocks.push(blockInfo);
-            } else if (this.isSpecialBlock(shape)) {
+            } else if (this.isSpecialBlock(shapes)) {
                 categories.specialBlocks.push(blockInfo);
             } else {
                 categories.nonStandardShapes.push(blockInfo);
@@ -60,32 +61,42 @@ class BlockAnalyzer {
         return categories;
     }
 
-    isFullBlock(shape) {
-        // A full block is a single box from 0,0,0 to 1,1,1
-        if (!Array.isArray(shape) || shape.length !== 1) return false;
-        
-        const box = shape[0];
-        return box.length === 6 &&
-               Math.abs(box[3] - box[0]) === 1 && // Width = 1
-               Math.abs(box[4] - box[1]) === 1 && // Height = 1
-               Math.abs(box[5] - box[2]) === 1;   // Depth = 1
+    isNoCollisionBlock(shapes) {
+        return shapes.every(shape => !shape || shape.length === 0);
     }
 
-    isPartialBlock(shape) {
-        // Partial blocks have a single collision box smaller than 1x1x1
-        if (!Array.isArray(shape) || shape.length !== 1) return false;
+    isFullBlock(shapes) {
+        // A full block has a single shape with a single box from (0,0,0) to (1,1,1)
+        if (shapes.length !== 1 || !shapes[0] || shapes[0].length !== 1) return false;
         
-        const box = shape[0];
-        return box.length === 6 && (
-            Math.abs(box[3] - box[0]) < 1 || // Width less than 1
-            Math.abs(box[4] - box[1]) < 1 || // Height less than 1
-            Math.abs(box[5] - box[2]) < 1    // Depth less than 1
-        );
+        const box = shapes[0][0];
+        if (!box || box.length !== 6) return false;
+
+        // Check if the box fills a 1x1x1 space
+        const width = Math.abs(box[3] - box[0]);
+        const height = Math.abs(box[4] - box[1]);
+        const depth = Math.abs(box[5] - box[2]);
+
+        return width === 0.5 && height === 0.5 && depth === 0.5;  // Full blocks are 0.5x0.5x0.5 centered boxes
     }
 
-    isSpecialBlock(shape) {
-        // Special blocks have multiple collision boxes
-        return Array.isArray(shape) && shape.length > 1;
+    isPartialBlock(shapes) {
+        // Partial blocks have a single shape with a single box smaller than full size
+        if (shapes.length !== 1 || !shapes[0] || shapes[0].length !== 1) return false;
+        
+        const box = shapes[0][0];
+        if (!box || box.length !== 6) return false;
+
+        const width = Math.abs(box[3] - box[0]);
+        const height = Math.abs(box[4] - box[1]);
+        const depth = Math.abs(box[5] - box[2]);
+
+        return width < 0.5 || height < 0.5 || depth < 0.5;
+    }
+
+    isSpecialBlock(shapes) {
+        // Special blocks have multiple shapes or multiple boxes in a shape
+        return shapes.some(shape => shape && shape.length > 1) || shapes.length > 1;
     }
 
     getShapeDimensions(box) {
