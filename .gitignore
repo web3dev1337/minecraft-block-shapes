@@ -44,3 +44,7 @@ desktop.ini
 node_modules/
 .env
 dist/
+
+# Reports
+reports/*
+!reports/.gitkeep
