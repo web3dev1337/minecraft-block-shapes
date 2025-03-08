@@ -2,7 +2,17 @@ const BlockAnalyzer = require('./blockAnalyzer');
 const fs = require('fs').promises;
 const path = require('path');
 
-async function generateMarkdownReport(categories, stats) {
+// Add getMaterialType helper function
+function getMaterialType(blockId) {
+    if (blockId.includes('wood') || blockId.includes('planks')) return 'wood';
+    if (blockId.includes('stone') || blockId.includes('rock')) return 'stone';
+    if (blockId.includes('metal') || blockId.includes('iron')) return 'metal';
+    if (blockId.includes('glass')) return 'glass';
+    if (blockId.includes('dirt') || blockId.includes('grass')) return 'earth';
+    return 'other';
+}
+
+async function generateMarkdownReport(categories, stats, analyzer) {
     let md = '# Minecraft Block Shapes Analysis\n\n';
     
     // Categories
@@ -178,8 +188,8 @@ async function main() {
             JSON.stringify(jsonReport, null, 2)
         );
 
-        // Save Markdown report
-        const markdownReport = await generateMarkdownReport(categories, stats);
+        // Save Markdown report - pass analyzer instance
+        const markdownReport = await generateMarkdownReport(categories, stats, analyzer);
         await fs.writeFile(
             path.join(reportDir, 'block-shapes.md'),
             markdownReport
