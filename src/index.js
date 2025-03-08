@@ -212,6 +212,59 @@ function hasGravity(id) {
     return /sand|gravel|anvil|dragon_egg/.test(id);
 }
 
+// Add these functions after the other helper functions
+
+function getMainDimensions(shapes) {
+    // Get the first non-empty shape's dimensions
+    const firstShape = shapes.find(shape => shape && shape.length > 0);
+    if (!firstShape || !firstShape[0]) {
+        return { width: 0, height: 0, depth: 0 };
+    }
+
+    const box = firstShape[0];
+    return {
+        width: Math.abs(box[3] - box[0]),
+        height: Math.abs(box[4] - box[1]),
+        depth: Math.abs(box[5] - box[2])
+    };
+}
+
+function calculateRecommendedScale(dimensions) {
+    // Calculate recommended scaling based on dimensions
+    const { width, height, depth } = dimensions;
+    
+    // If any dimension is very small (less than 0.2), suggest scaling up
+    if (width < 0.2 || height < 0.2 || depth < 0.2) {
+        return {
+            factor: 2,
+            reason: "Very small dimensions, suggest scaling up for visibility"
+        };
+    }
+
+    // If dimensions are close to half-block
+    if (width <= 0.5 && height <= 0.5 && depth <= 0.5) {
+        return {
+            factor: 0.5,
+            reason: "Half-block size, can use half-scale"
+        };
+    }
+
+    // If dimensions are close to full block
+    if (width > 0.8 || height > 0.8 || depth > 0.8) {
+        return {
+            factor: 1,
+            reason: "Close to full block size, suggest using full block"
+        };
+    }
+
+    // For other cases, suggest proportional scaling
+    const maxDimension = Math.max(width, height, depth);
+    return {
+        factor: Math.ceil(maxDimension * 2) / 2, // Round up to nearest 0.5
+        reason: "Proportional scaling based on largest dimension"
+    };
+}
+
 async function main() {
     const analyzer = new BlockAnalyzer();
     
