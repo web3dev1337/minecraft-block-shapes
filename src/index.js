@@ -15,16 +15,20 @@ async function main() {
             if (blocks.length > 0) {
                 console.log('Examples:');
                 blocks.slice(0, 3).forEach(block => {
-                    const dimensions = block.shape.map(box => ({
-                        width: box[3] - box[0],
-                        height: box[4] - box[1],
-                        depth: box[5] - box[2]
-                    }));
-                    
                     console.log(`  - Block: ${block.id}`);
                     console.log(`    Shape Index: ${block.shapeIndex}`);
-                    console.log(`    Collision Boxes: ${block.shape.length}`);
-                    console.log(`    Dimensions: ${JSON.stringify(dimensions)}`);
+                    console.log(`    Collision Boxes: ${block.shape ? block.shape.length : 0}`);
+                    
+                    if (block.shape && block.shape.length > 0) {
+                        const dimensions = block.shape.map(box => ({
+                            width: Math.abs(box[3] - box[0]),
+                            height: Math.abs(box[4] - box[1]),
+                            depth: Math.abs(box[5] - box[2])
+                        }));
+                        console.log(`    Dimensions: ${JSON.stringify(dimensions)}`);
+                    } else {
+                        console.log(`    Dimensions: No collision boxes`);
+                    }
                 });
             }
         }
