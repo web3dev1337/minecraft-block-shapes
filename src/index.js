@@ -9,12 +9,16 @@ async function generateMarkdownReport(categories, stats) {
     for (const [category, blocks] of Object.entries(categories)) {
         md += `## ${category} (${blocks.length} blocks)\n\n`;
         
-        // Show first 5 examples
+        // Add category overview
+        md += getCategoryOverview(category) + '\n\n';
+        
+        // Show first 5 examples with enhanced analysis
         const examples = blocks.slice(0, 5);
         examples.forEach(block => {
             md += `### ${block.id}\n`;
             md += `- Shape Indices: \`[${block.shapeIndices.join(', ')}]\`\n`;
             
+            // Add shape analysis
             block.shapes.forEach((shape, index) => {
                 if (!shape || shape.length === 0) {
                     md += `- Shape ${block.shapeIndices[index]}: No collision box\n`;
@@ -29,8 +33,34 @@ async function generateMarkdownReport(categories, stats) {
                     });
                 }
             });
+
+            // Add conversion recommendation
+            const recommendation = analyzer.getConversionRecommendation(block, category);
+            if (recommendation) {
+                md += '\nConversion Recommendation:\n';
+                md += `- Difficulty: ${recommendation.difficulty}\n`;
+                md += `- Strategy: ${recommendation.strategy}\n`;
+                md += `- Notes: ${recommendation.notes}\n`;
+            }
+
+            // Add detailed block analysis
+            const analysis = analyzer.analyzeBlockType(block);
+            if (analysis.category) {
+                md += '\nBlock Analysis:\n';
+                md += `- Category: ${analysis.category}\n`;
+                md += `- Sub-type: ${analysis.subType}\n`;
+                md += `- Properties: ${analysis.properties.join(', ')}\n`;
+                if (analysis.behaviorNotes.length > 0) {
+                    md += `- Behavior Notes: ${analysis.behaviorNotes.join(', ')}\n`;
+                }
+            }
+
             md += '\n';
         });
+        
+        // Add category statistics
+        md += '### Category Statistics\n';
+        md += getCategoryStats(blocks) + '\n\n';
         
         // List all blocks in category
         md += '### All blocks in this category:\n';
@@ -53,6 +83,28 @@ async function generateMarkdownReport(categories, stats) {
     md += `- Blocks with multiple collision boxes: ${stats.multiBox}\n`;
     
     return md;
+}
+
+function getCategoryOverview(category) {
+    const overviews = {
+        fullBlocks: 'Standard cubic blocks that occupy a full 1x1x1 space. These are the easiest to convert and can be directly mapped to target game blocks.',
+        partialBlocks: 'Blocks that occupy less than a full block space. These require careful consideration of scaling and placement in the target game.',
+        specialBlocks: 'Blocks with complex shapes or multiple states. These may need special handling or simplification for conversion.',
+        nonStandardShapes: 'Blocks with unique or no collision shapes. These may need custom implementation or could be omitted.'
+    };
+    return overviews[category] || '';
+}
+
+function getCategoryStats(blocks) {
+    const stats = {
+        totalBlocks: blocks.length,
+        uniqueShapes: new Set(blocks.flatMap(b => b.shapeIndices)).size,
+        materialTypes: new Set(blocks.map(b => getMaterialType(b.id))).size
+    };
+    
+    return `- Total Blocks: ${stats.totalBlocks}\n` +
+           `- Unique Shapes: ${stats.uniqueShapes}\n` +
+           `- Material Types: ${stats.materialTypes}`;
 }
 
 async function main() {
