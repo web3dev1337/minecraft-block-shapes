@@ -274,27 +274,37 @@ function generateMinimalBlockMetadata(block, category, analyzer) {
         id: block.id,
         importCategory: category,
         properties: {
-            hasCollision: block.shapes.some(shape => shape && shape.length > 0),
+            hasCollision: block.collisionData.hasCollision,
             isTransparent: block.materialInfo.isTransparent,
             isInteractive: block.materialInfo.isInteractive,
             hasStates: block.blockBehavior.hasStates
         },
-        height: {
-            exact: analyzer.getBlockHeight(block.shapes),
-            category: analyzer.categorizeHeight(analyzer.getBlockHeight(block.shapes))
-        }
+        height: block.collisionData.height
     };
 }
 
 // Generate minimal report
-async function generateMinimalReports(analyzer) {
+async function generateReports(analyzer, stats, categories) {
     const minimalReport = {
         metadata: {
             version: "1.0.0",
-            totalBlocks: analyzer.getTotalBlocks()
+            totalBlocks: stats.total
         },
-        blocks: analyzer.getAllBlockMetadata().map(block => 
-            generateMinimalBlockMetadata(block, block.importCategory, analyzer)
+        blocks: Object.entries(categories).flatMap(([category, blocks]) => 
+            blocks.map(block => ({
+                id: block.id,
+                importCategory: category,
+                properties: {
+                    hasCollision: block.shapes.some(shape => shape && shape.length > 0),
+                    isTransparent: block.id.includes('glass') || block.id.includes('ice'),
+                    isInteractive: isInteractiveBlock(block.id),
+                    hasStates: block.shapes.length > 1
+                },
+                height: {
+                    exact: analyzer.getBlockHeight(block.shapes),
+                    category: analyzer.categorizeHeight(analyzer.getBlockHeight(block.shapes))
+                }
+            }))
         )
     };
     
@@ -403,8 +413,8 @@ async function main() {
             markdownReport
         );
 
-        // Add new minimal report generation
-        await generateMinimalReports(analyzer);
+        // Add new minimal report generation with stats
+        await generateReports(analyzer, stats, categories);
 
         console.log('\nReports generated:');
         console.log('- JSON report: reports/block-shapes.json');
