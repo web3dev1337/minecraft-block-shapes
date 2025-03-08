@@ -113,6 +113,29 @@ class BlockAnalyzer {
         };
     }
 
+    categorizeHeight(height) {
+        if (height >= 1.0) return 'full';
+        if (height >= 0.875) return 'almost_full';
+        if (height >= 0.5) return 'half';
+        if (height >= 0.125) return 'slab';
+        return 'minimal';
+    }
+
+    getBlockHeight(shapes) {
+        if (!shapes || shapes.length === 0) return 0;
+        
+        // Get maximum height from all shapes
+        let maxHeight = 0;
+        for (const shape of shapes) {
+            if (!shape || shape.length === 0) continue;
+            for (const box of shape) {
+                const dims = this.getShapeDimensions(box);
+                maxHeight = Math.max(maxHeight, dims.height);
+            }
+        }
+        return maxHeight;
+    }
+
     getConversionRecommendation(block, category) {
         switch(category) {
             case 'fullBlocks':
@@ -211,8 +234,17 @@ class BlockAnalyzer {
             category: '',
             subType: '',
             properties: [],
-            behaviorNotes: []
+            behaviorNotes: [],
+            height: {
+                exact: 0,
+                category: ''
+            }
         };
+
+        // Add height analysis
+        const blockHeight = this.getBlockHeight(block.shapes);
+        analysis.height.exact = blockHeight;
+        analysis.height.category = this.categorizeHeight(blockHeight);
 
         // Determine basic category
         if (block.id.includes('stairs')) {
